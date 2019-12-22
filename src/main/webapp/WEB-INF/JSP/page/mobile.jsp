@@ -1,26 +1,25 @@
 <%--
   Created by IntelliJ IDEA.
-  User: nastya
+
   Date: 20.12.2019
   Time: 0:08
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<c:forEach var="m" items="${mobiles}">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xlg-2">
-        <div id="mobile${m.id }" class="panel panel-default product">
-            <h2>${fn:toUpperCase(m.model) }</h2>
-            <div class="model">Price:
-                <fmt:formatNumber value="${m.price }" type="currency" currencyCode="USD"/>
-            </div>
-            <div class="model">Model:
-                    ${m.model}
-            </div>
-            <div class="manufacturer">manufacturer: ${m.manufacturer }
-            </div>
-        </div>
-    </div>
-</c:forEach>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<table class="table table-dark">
+    <tbody>
+    <c:forEach var="m" items="${mobiles}">
+        <tr id="mobile${m.id }">
+            <th scope="row">${m.id }</th>
+            <td> ${m.model}</td>
+            <td><fmt:formatNumber value="${m.price }" type="currency" currencyCode="USD"/></td>
+            <td>${m.manufacturer }</td>
+            <td><a href="edit?id=${m.id }">Ред.</a></td>
+        </tr>
+    </c:forEach>
+    </tbody>
+</table>

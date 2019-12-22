@@ -9,10 +9,10 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Mobile {
+public class User {
     private Integer id;
-    private String model;
-    private Integer price;
-    private String manufacturer;
+    private String name;
+    private String password;
+    private String email;
+    private String phone;
 }
-

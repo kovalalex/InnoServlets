@@ -11,9 +11,17 @@ public class ServiceManager {
     private final Properties applicationProperties = new Properties();
     private BasicDataSource dataSource;
     private MobileService mobileService;
+    private UserService userService;
 
     public MobileService getMobileService() {
         return mobileService;
+    }
+
+    private ServiceManager(ServletContext context) {
+        loadApplicationProperties();
+        dataSource = createDataSource();
+        mobileService = new MobileService(dataSource);
+        userService = new UserService(dataSource);
     }
 
     public static ServiceManager getInstance(ServletContext context) {
@@ -24,13 +32,12 @@ public class ServiceManager {
         }
         return instance;
     }
-    private ServiceManager(ServletContext context) {
-        loadApplicationProperties();
-        dataSource = createDataSource();
-        mobileService = new MobileService(dataSource);
+
+    public UserService getUserService() {
+        return userService;
     }
 
-    private BasicDataSource createDataSource(){
+    private BasicDataSource createDataSource() {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDefaultAutoCommit(false);
         dataSource.setRollbackOnReturn(true);

@@ -1,4 +1,4 @@
-package com.inno.mobiles.filters;
+package com.inno.mobiles.filter;
 
 import com.inno.mobiles.util.RoutingUtils;
 
@@ -12,8 +12,9 @@ import java.io.IOException;
     @WebFilter("/*")
     public class ErrorHandlerFilter implements Filter {
         @Override
-        public void init(FilterConfig filterConfig) throws ServletException {
+        public void init(FilterConfig filterConfig) {
         }
+
         @Override
         public void doFilter(ServletRequest req, ServletResponse resp,
                              FilterChain chain) throws IOException, ServletException {
