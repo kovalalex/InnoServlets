@@ -27,7 +27,7 @@ public class ServiceManager {
     private ServiceManager(ServletContext context) {
         loadApplicationProperties();
         dataSource = createDataSource();
-        MobileService mobileService = new MobileService(dataSource);
+        mobileService = new MobileService(dataSource);
     }
 
     private BasicDataSource createDataSource(){

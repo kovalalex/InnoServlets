@@ -20,11 +20,15 @@ import java.io.IOException;
             try {
                 chain.doFilter(req, resp);
             } catch (Throwable th) {
-                String requestUrl = ((HttpServletRequest)req).getRequestURI();
-         //       LOGGER.error("Request " + requestUrl + " failed: " + th.getMessage(), th);
+                String requestUrl = ((HttpServletRequest) req).getRequestURI();
+                //       LOGGER.error("Request " + requestUrl + " failed: " + th.getMessage(), th);
                 Object error;
-                req.setAttribute("st",th.getMessage());
-                RoutingUtils.forwardToPage("error.jsp", ((HttpServletRequest)req), ((HttpServletResponse)resp));
+                System.out.println(
+                        th.getMessage()
+                );
+                th.printStackTrace();
+                req.setAttribute("st", th.getMessage());
+                RoutingUtils.forwardToPage("error.jsp", ((HttpServletRequest) req), ((HttpServletResponse) resp));
             }
         }
         @Override
