@@ -17,7 +17,9 @@ public class CheckAuthentificationFilter implements Filter {
         if (req.getSession().getAttribute("IS_AUTHENTIFICATED") != null) {
             chain.doFilter(req, response);
         } else {
-            String requestUrl = req.getRequestURI();
+            // String requestUrl = req.getRequestURI();
+            String requestUrl = (req.getQueryString() != null) ? String.join(
+                    "", req.getRequestURL(), "?", req.getQueryString()) : req.getRequestURI();
             req.getSession().setAttribute("REDIRECT_URL_AFTER_SIGNIN", requestUrl);
             ((HttpServletResponse) response).sendRedirect(req.getContextPath() + "/sign-in");
         }

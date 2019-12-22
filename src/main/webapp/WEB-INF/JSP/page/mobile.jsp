@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<a href="add-mobile">Добавить мобильный телефон</a>
 <table class="table table-dark">
     <tbody>
     <c:forEach var="m" items="${mobiles}">

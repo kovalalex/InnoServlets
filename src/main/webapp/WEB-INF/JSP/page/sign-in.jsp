@@ -7,11 +7,12 @@
     <div class="form-group">
         <label for="name">Имя</label>
         <input type="text" id="name" class="form-control" name="name" value="${mobile.model}">
-
+        <small id="nameHelp" class="form-text text-muted">по умолчанию: user</small>
     </div>
     <div class="form-group">
         <label for="pass">Пароль</label>
         <input type="password" id="pass" class="form-control" name="password" value="${mobile.price}">
+        <small id="passHelp" class="form-text text-muted">по умолчанию: user</small>
 
     </div>
 
