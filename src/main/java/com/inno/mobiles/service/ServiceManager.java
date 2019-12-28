@@ -20,8 +20,8 @@ public class ServiceManager {
     private ServiceManager(ServletContext context) {
         loadApplicationProperties();
         dataSource = createDataSource();
-        mobileService = new MobileService(dataSource);
-        userService = new UserService(dataSource);
+        mobileService = new MobileServiceImpl(dataSource);
+        userService = new UserServiceImpl(dataSource);
     }
 
     public static ServiceManager getInstance(ServletContext context) {

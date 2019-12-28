@@ -13,7 +13,8 @@ public class GenerateDB {
     public static void main(String[] args) {
         try (Connection connection = DriverManager.getConnection(JDBC_URL, JDBC_USERNAME, JDBC_PASSWORD);
              Statement statement = connection.createStatement()) {
-            statement.executeQuery("create table if not exists mobile\n" +
+            statement.execute("DROP TABLE IF EXISTS mobile;" +
+                    "create table mobile\n" +
                     "(\n" +
                     "    id           bigserial    not null\n" +
                     "        constraint mobile_pkey\n" +
@@ -22,10 +23,14 @@ public class GenerateDB {
                     "    price        integer      not null,\n" +
                     "    manufacturer varchar(100) not null\n" +
                     ");\n" +
+                    "INSERT INTO mobile (id, model, price, manufacturer) VALUES (default , 'ai-234', 700, 'Apple');\n" +
+                    "INSERT INTO mobile (id, model, price, manufacturer) VALUES (default , 'ai-235', 300, 'SONY');\n" +
+                    "INSERT INTO mobile (id, model, price, manufacturer) VALUES (default , 'vz-12', 200, 'SONY');" +
                     "\n" +
                     "alter table mobile\n" +
                     "    owner to postgres;\n" +
                     "\n" +
+                    "DROP TABLE IF EXISTS users;" +
                     "create table if not exists users\n" +
                     "(\n" +
                     "    id       serial  not null\n" +
@@ -38,7 +43,8 @@ public class GenerateDB {
                     ");\n" +
                     "\n" +
                     "alter table users\n" +
-                    "    owner to postgres;");
+                    "    owner to postgres;" +
+                    "INSERT INTO users (id, name, password, email, phone) VALUES (1, 'user', 'user', '1@1.ru', '+45435345');");
 
         } catch (SQLException e) {
             e.printStackTrace();

@@ -31,7 +31,7 @@ public class AuthentificationController extends AbstractController {
             if (redirectTo == null) redirectTo = req.getContextPath();
             RoutingUtils.redirect(redirectTo, req, resp);
         } else {
-            //   LOGGER.error("bad sign-in");
+              LOGGER.error("bad sign-in");
             RoutingUtils.redirect(req.getContextPath() + "/sign-in", req, resp);
         }
     }
